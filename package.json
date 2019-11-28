@@ -1,0 +1,25 @@
+{
+  "name": "heros",
+  "version": "1.0.0",
+  "description": "王者荣耀英雄信息管理系统",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Moyo203/heros.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Moyo203/heros/issues"
+  },
+  "homepage": "https://github.com/Moyo203/heros#readme",
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "bootstrap": "^4.4.0",
+    "jquery": "^1.12.2"
+  }
+}
