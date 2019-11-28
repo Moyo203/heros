@@ -10,6 +10,7 @@ function router(req, res) {
     let method = req.method;
     let urlObj = urlModel.parse(req.url, true)
     let pathname = urlObj.pathname
+    //把pathname挂载到res上
     res.pathname = pathname;
 
     if (method == 'GET' && (pathname == '/' || pathname == "/index" || pathname == "/index.html")) {
