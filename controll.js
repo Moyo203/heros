@@ -4,6 +4,7 @@ const fs = require('fs')
 const path = require('path')
 let bindRender = require('./bindRender.js')
 let modelData = require('./modelData.js')
+const urlModel = require('url');
 //业务处理
 // 暴露出来里面的多个函数
 module.exports = {
@@ -30,7 +31,16 @@ module.exports = {
 
     //显示信息info界面
     showInfoPage(req,res){
-        res.render('info', {})
+        //查看URL里面的属性
+        let urlObj = urlModel.parse(req.url,true)
+        let id = urlObj.query.id;
+        // console.log(id);
+        modelData.getOneHeroInfo(id,function(err,obj){
+            if(err) res.end('404');
+            res.render('info',obj)
+        })
+        // res.render('info', {})
+
     },
 
     //显示新增add界面
@@ -38,6 +48,18 @@ module.exports = {
         res.render('add', {})
     },
 
+    //添加英雄数据
+    addHeroInfo(){
+        //先写post所需的两个方法
+        let str = '';
+        req.on('data',chunk=>{
+            str += chunk;
+        })
+        req.on('end',()=>{
+
+        })
+
+    },
     //加载静态资源例如：css、javascript
     loadStaticSource(req,res){
         // 这里css\javascript都会加载

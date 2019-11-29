@@ -29,11 +29,30 @@
             <input type="radio" name="gender" value="女">女
           </label>
         </div>
+        <div class="form-group">
+          <label>英雄地址</label>
+          <input type="text" name="address" class="form-control" placeholder="请输入英雄地址">
+        </div>
       </div>
-      <button type="submit" class="btn btn-success">点击保存</button>
+      <button type="submit" class="btn btn-success">点击添加</button>
     </form>
   </div>
   <script src="/node_modules/jquery/dist/jquery.js"></script>
+  <script>
+    $(function(){
+      $('.btn-success').on('click',function(e){
+        e.preventDefault();
+        $.ajax({
+          type:'post',
+          url:'/addHeroInfo',
+          data:$('#form').serialize();
+          success:function(res){
+            console.log(res);
+          }
+        })
+      })
+    })
+  </script>
 </body>
 
 </html>
