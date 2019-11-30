@@ -50,15 +50,15 @@
           data: $('#form').serialize(),
           dataType: 'json',
           success: function (res) {
-            console.log(res);
+            // console.log(res);
             
-            // if(res.code == 200) {
-            //   //添加英雄成功，返回到首页
-            //   location.href = '/'
-            // }else {
-            //   //刷新当前的页面
-            //   location.reload();
-            // }
+            if(res.code == 200) {
+              //添加英雄成功，返回到首页
+              location.href = '/'
+            }else {
+              //刷新当前的页面
+              location.reload();
+            }
           }
         })
       })

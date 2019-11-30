@@ -33,6 +33,6 @@ function router(req, res) {
         res.end(JSON.stringify(obj))
     }
 }
-
+ 
 //将方法暴露
 module.exports = router

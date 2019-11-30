@@ -44,13 +44,13 @@ module.exports = {
             // 新数据的id就是总数据的长度+1
             heroInfo.id = +heroArr[heroArr.length-1].id + 1;
             // 时间
-            heroInfo.data = moment().format('YYYY-MM-DD HH:mm:ss')
+            heroInfo.date = moment().format('YYYY-MM-DD HH:mm:ss')
             heroArr.push(heroInfo)
             // 读写进去
             fs.writeFile(path.join(__dirname,'./hero.json'),JSON.stringify(heroArr),err=>{
                 if (err) return callback(false);
                 callback(true);
-               
+            
             })
         })
 
