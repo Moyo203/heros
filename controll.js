@@ -78,6 +78,29 @@ module.exports = {
         })
 
     },
+
+    //删除数据
+    deleteHeroInfo(req,res){
+         //查看URL里面的属性
+         let urlObj = urlModel.parse(req.url,true)
+         let deleteId = urlObj.query.id
+         modelData.deleteHeroInfo(deleteId,result=>{
+            res.writeHeader(200,{
+                'Content-Type': 'text/plain;charset=utf-8'
+            })
+            if(result) return res.end(JSON.stringify({
+                code: 200,
+                msg: '添加成功'
+            }))
+
+            res.end(JSON.stringify({
+                code: 201,
+                msg: '添加失败'
+            }))
+         })
+
+
+    },
     //加载静态资源例如：css、javascript
     loadStaticSource(req,res){
         // 这里css\javascript都会加载

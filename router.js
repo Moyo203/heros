@@ -23,6 +23,8 @@ function router(req, res) {
         controll.showEditPage(req, res) 
     } else if(method == 'POST' && pathname == '/addHeroInfo'){
         controll.addHeroInfo(req,res)
+    } else if(method == 'GET' && pathname == '/deleteHeroInfo'){
+        controll.deleteHeroInfo(req,res)
     }else if (method == 'GET' && pathname.startsWith('/node_modules')) {
         controll.loadStaticSource(req,res) 
     } else {
