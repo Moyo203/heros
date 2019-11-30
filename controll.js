@@ -5,6 +5,8 @@ const path = require('path')
 let bindRender = require('./bindRender.js')
 let modelData = require('./modelData.js')
 const urlModel = require('url');
+const querystring = require('querystring')
+
 //业务处理
 // 暴露出来里面的多个函数
 module.exports = {
@@ -49,14 +51,30 @@ module.exports = {
     },
 
     //添加英雄数据
-    addHeroInfo(){
+    addHeroInfo(req,res){
         //先写post所需的两个方法
         let str = '';
         req.on('data',chunk=>{
             str += chunk;
         })
         req.on('end',()=>{
+            // 因为前面使用了serialize方法将数据转为序列字符串
+            //所以这里使用querystring.parse将其转换为对象
+            let heroInfo = querystring.parse(str);
+            modelData.addHeroInfo(heroInfo,(result)=>{
+                res.writeHeader(200,{
+                    'Content-Type': 'text/plain;charset=utf-8'
+                })
+                if(result) return res.end(JSON.stringify({
+                    code: 200,
+                    msg: '添加成功'
+                }))
 
+                res.end(JSON.stringify({
+                    code: 201,
+                    msg: '添加失败'
+                }))
+            })
         })
 
     },

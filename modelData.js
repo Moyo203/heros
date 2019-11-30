@@ -2,7 +2,7 @@
 // 1.引入依赖模块
 const fs = require('fs')
 const path = require('path')
-// const moment = require('moment')
+const moment = require('moment')
 
 //数据处理
 //暴露模块中的函数
@@ -34,9 +34,26 @@ module.exports = {
             })
             callback(null,obj);
         })
+ },
+ //heroInfo是新数据，heroArr是总数据
+    addHeroInfo(heroInfo,callback){
+        this.getAllHeroData((err,data)=>{
+            if(err) return callback(err)
+            //将json中的字符串数组转成真正的数组
+            let heroArr = JSON.parse(data);
+            // 新数据的id就是总数据的长度+1
+            heroInfo.id = +heroArr[heroArr.length-1].id + 1;
+            // 时间
+            heroInfo.data = moment().format('YYYY-MM-DD HH:mm:ss')
+            heroArr.push(heroInfo)
+            // 读写进去
+            fs.writeFile(path.join(__dirname,'./hero.json'),JSON.stringify(heroArr),err=>{
+                if (err) return callback(false);
+                callback(true);
+               
+            })
+        })
 
-
-
-        
     }
+
 }

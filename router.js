@@ -21,7 +21,7 @@ function router(req, res) {
         controll.showInfoPage(req,res) 
     } else if (method == 'GET' && pathname == '/edit.html') {
         controll.showEditPage(req, res) 
-    } else if(method == 'POST' && pathname == './addHeroInfo'){
+    } else if(method == 'POST' && pathname == '/addHeroInfo'){
         controll.addHeroInfo(req,res)
     }else if (method == 'GET' && pathname.startsWith('/node_modules')) {
         controll.loadStaticSource(req,res) 
