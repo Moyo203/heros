@@ -73,14 +73,13 @@ module.exports = {
                 res.writeHeader(200, {
                     'Content-Type': 'text/plain;charset=utf-8'
                 })
-                if (result) return res.end(JSON.stringify({
-                    code: 200,
-                    msg: '添加成功'
-                }))
-
+                if(result) return res.json({
+                    code:200,
+                    msg:'更新成功'
+                })
                 res.end(JSON.stringify({
-                    code: 201,
-                    msg: '添加失败'
+                    code:201,
+                    msg:'添加失败'
                 }))
             })
         })
@@ -96,14 +95,13 @@ module.exports = {
             res.writeHeader(200, {
                 'Content-Type': 'text/plain;charset=utf-8'
             })
-            if (result) return res.end(JSON.stringify({
-                code: 200,
-                msg: '添加成功'
-            }))
-
+            if(result) return res.json({
+                code:200,
+                msg:'更新成功'
+            })
             res.end(JSON.stringify({
-                code: 201,
-                msg: '添加失败'
+                code:201,
+                msg:'添加失败'
             }))
         })
 
@@ -125,15 +123,25 @@ module.exports = {
                 res.writeHeader(200, {
                     'Content-Type': 'text/plain;charset=utf-8'
                 })
-                if (result) return res.end(JSON.stringify({
-                    code: 200,
-                    msg: '添加成功'
-                }))
+                // if (result) return res.end(JSON.stringify({
+                //     code: 200,
+                //     msg: '添加成功'
+                // }))
 
+                // res.end(JSON.stringify({
+                //     code: 201,
+                //     msg: '添加失败'
+                // }))
+
+                if(result) return res.json({
+                    code:200,
+                    msg:'更新成功'
+                })
                 res.end(JSON.stringify({
-                    code: 201,
-                    msg: '添加失败'
+                    code:201,
+                    msg:'添加失败'
                 }))
+                
 
             })
         })

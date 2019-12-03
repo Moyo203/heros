@@ -8,6 +8,10 @@ function bindRender(req,res){
         let str = template(path.join(__dirname,'./views/'+filename+'.html'),obj)
         res.end(str)
     }
+    //封装一个方法用来处理返回的信息
+    res.json = function(obj){
+        res.end(JSON.stringify(obj))
+    }
 }
 
 //将方法暴露出去
