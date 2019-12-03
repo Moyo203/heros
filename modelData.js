@@ -17,7 +17,7 @@ module.exports = {
 
         })
     },
-
+    // 获取单个数据
     getOneHeroInfo(id, callback) {
         this.getAllHeroData(function (err, data) {
             if (err) return callback(err);
@@ -36,6 +36,7 @@ module.exports = {
         })
     },
     //heroInfo是新数据，heroArr是总数据
+    // 添加数据
     addHeroInfo(heroInfo, callback) {
         this.getAllHeroData((err, data) => {
             if (err) return callback(err)
@@ -55,6 +56,7 @@ module.exports = {
         })
 
     },
+    //删除数据
     deleteHeroInfo(deleteId, callback) {
         this.getAllHeroData(function (err, data) {
             if (err) return callback(err)
@@ -70,11 +72,29 @@ module.exports = {
             fs.writeFile(path.join(__dirname, './hero.json'), JSON.stringify(heroArr), err => {
                 if (err) return callback(false);
                 callback(true);
-
             })
+        })
+    },
 
+    // 编辑数据
+    editHeroInfo(heroInfo,callback){
+        // 先获取数据
+        this.getAllHeroData(function (err, data) {
+            if(err) return callback(false)
+             //将json中的字符串数组转成真正的数组
+             let heroArr = JSON.parse(data);
+             //新数据的时间
+             heroInfo.date = moment().format('YYYY-MM-DD HH:mm:ss')
+             heroArr.some(function(item,index){
+                 if(heroInfo.id == item.id){
+                     heroArr.splice(index,1,heroInfo)
+                 }
+             })
+             fs.writeFile(path.join(__dirname,'./hero.json'),JSON.stringify(heroArr),err=>{
+                 if(err) return callback(false)
+                 callback(true)
+             })
 
         })
     }
-
 }

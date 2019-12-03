@@ -25,6 +25,8 @@ function router(req, res) {
         controll.addHeroInfo(req,res)
     } else if(method == 'GET' && pathname == '/deleteHeroInfo'){
         controll.deleteHeroInfo(req,res)
+    } else if(method == 'POST' && pathname == '/editHeroInfo'){
+        controll.editHeroInfo(req,res)
     }else if (method == 'GET' && pathname.startsWith('/node_modules')) {
         controll.loadStaticSource(req,res) 
     } else {
