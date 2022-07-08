@@ -21,6 +21,6 @@
     "art-template": "^4.13.2",
     "bootstrap": "^4.4.0",
     "jquery": "^1.12.2",
-    "moment": "^2.24.0"
+    "moment": "^2.29.4"
   }
 }
